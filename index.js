@@ -8,10 +8,7 @@ var stringRegex = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
 
 function replaceStringsWithRequires(string) {
   return string.replace(stringRegex, function (match, quote, url) {
-    if (url.charAt(0) !== ".") {
-      url = "./templates/" + url.split('/templates/')[1];
-    }
-    return "require('" + url + "')";
+    return "require('./templates/" + url.split('/templates/')[1] + "')";
   });
 }
 
